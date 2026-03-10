@@ -46,6 +46,7 @@ By leveraging these plugins, you can streamline your workflow and tackle coding 
 | [golang](golang)  | Aliases and utilities for Go development, including build, test, mod, and coverage helpers.                                 |
 | jump              | Jump helps you navigate faster by learning your habits.                                                                     |
 | kubectl           | Command-line tool for interacting with Kubernetes clusters.                                                                 |
+| [mise](mise)      | [mise](https://mise.jdx.dev) is a polyglot tool version manager for Node.js, Python, Ruby, Go, and more.                    |
 | npm               | Package manager for Node.js facilitating installation and management of project dependencies.                               |
 | nvm               | Node.js version manager allowing easy switching between different Node.js versions.                                         |
 | progress          | Insufficient information provided to give a precise description.                                                            |
