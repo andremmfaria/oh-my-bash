@@ -11,10 +11,7 @@ Add [oh-my-bash](https://ohmybash.github.io) integration with [Docker](https://w
     plugins=(docker)
     ```
 
-3. Optionally, enable Docker tab completions by adding it to your `completions` definition:
-    ```sh
-    completions=(docker)
-    ```
+> **Note:** Tab completion for Docker commands is included automatically — no separate `completions=(docker)` entry is needed.
 
 ## Aliases
 
