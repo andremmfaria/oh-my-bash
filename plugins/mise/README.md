@@ -14,6 +14,12 @@ Add [oh-my-bash](https://ohmybash.github.io) integration with [mise](https://mis
     plugins=(mise)
     ```
 
+The plugin resolves the mise binary automatically — no manual `eval` line in `~/.bashrc` is needed. It checks the following locations in order:
+
+1. `mise` on `$PATH` (system package managers: apt, brew, dnf, pacman, etc.)
+2. `$MISE_INSTALL_PATH` (custom install path set at install time)
+3. `~/.local/bin/mise` (default location for `curl https://mise.run | sh`)
+
 ## Configuration
 
 ### Quiet mode
@@ -26,12 +32,14 @@ OMB_PLUGIN_MISE_QUIET=true
 
 ## Aliases
 
+All aliases target the resolved mise binary, so they work regardless of whether mise is on `$PATH`.
+
 | Alias  | Command           | Description                              |
 |--------|-------------------|------------------------------------------|
 | `mi`   | `mise install`    | Install tool versions defined in config  |
 | `mu`   | `mise use`        | Set a tool version in the config file    |
 | `mr`   | `mise run`        | Run a task defined in `mise.toml`        |
-| `mx`   | `mise exec`       | Run a command in the mise environment    |
+| `mex`  | `mise exec`       | Run a command in the mise environment    |
 | `mls`  | `mise ls`         | List installed tool versions             |
 | `mlsr` | `mise ls-remote`  | List available remote versions           |
 
@@ -42,5 +50,5 @@ See the [mise documentation](https://mise.jdx.dev/getting-started.html) for full
 ```bash
 mi node@22          # mise install node@22
 mu node@lts         # mise use node@lts
-mx -- node --version
+mex -- node --version
 ```
