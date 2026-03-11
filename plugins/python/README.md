@@ -14,21 +14,21 @@ plugins=(python)
 
 Set these variables **before** the `source "$OSH/oh-my-bash.sh"` line in your `~/.bashrc`.
 
-| Variable                       | Default | Description                                              |
-|--------------------------------|---------|----------------------------------------------------------|
-| `OMB_PLUGIN_PYTHON_VENV_NAME`  | `venv`  | Default venv directory name used by `vrun` and `mkv`    |
-| `OMB_PLUGIN_PYTHON_AUTO_VRUN`  | _(unset)_ | Set to `true` to auto-activate venvs on `cd`           |
+| Variable                       | Default   | Description                                              |
+|--------------------------------|-----------|----------------------------------------------------------|
+| `OMB_PLUGIN_PYTHON_VENV_NAME`  | `venv`    | Default venv directory name used by `vrun` and `mkv`     |
+| `OMB_PLUGIN_PYTHON_AUTO_VRUN`  | _(unset)_ | Set to `true` to auto-activate venvs on directory change |
 
 ## Aliases
 
 ### General
 
-| Alias      | Command                    | Description                                   |
-|------------|----------------------------|-----------------------------------------------|
+| Alias      | Command                    | Description                                              |
+|------------|----------------------------|----------------------------------------------------------|
 | `py`       | `python3`                  | Shorthand for python3 (if `py` is not already installed) |
-| `pyfind`   | `find . -name "*.py"`      | Find all Python files in current tree         |
-| `pygrep`   | `grep -rn --include="*.py"`| Search inside Python files                    |
-| `pyserver` | `python3 -m http.server`   | Serve current directory over HTTP             |
+| `pyfind`   | `find . -name "*.py"`      | Find all Python files in current tree                    |
+| `pygrep`   | `grep -rn --include="*.py"`| Search inside Python files                               |
+| `pyserver` | `python3 -m http.server`   | Serve current directory over HTTP                        |
 
 ### pip
 
@@ -74,7 +74,7 @@ mkv .venv     # create and activate ./.venv
 
 ## Auto-activate venv
 
-When `OMB_PLUGIN_PYTHON_AUTO_VRUN=true`, the plugin overrides `cd` to automatically activate a virtual environment when you enter a directory that contains one, and deactivate it when you leave.
+When `OMB_PLUGIN_PYTHON_AUTO_VRUN=true`, the plugin registers a `PROMPT_COMMAND` hook to automatically activate a virtual environment when you enter a directory that contains one, and deactivate it when you leave. Using `PROMPT_COMMAND` instead of aliasing `cd` ensures compatibility with other plugins that also hook into directory changes (e.g. `nvm`).
 
 ```sh
 # ~/.bashrc (before sourcing oh-my-bash)
